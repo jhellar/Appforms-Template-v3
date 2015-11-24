@@ -1,0 +1,160 @@
+<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-tagsinput.css">
+<link rel="stylesheet" type="text/css" href="css/slider.css">
+<link rel="stylesheet" type="text/css" href="css/app.css">
+<title>Forms App</title>
+<script type="text/javascript">
+    var App = App || {};
+    App.views = App.views || {};
+    App.collections = App.collections || {};
+
+    $(function() {
+        if(typeof window.Phonegap !== "undefined" || typeof window.cordova !== "undefined"){
+          FastClick.attach(document.body); 
+        }
+
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style');
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important;}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle);
+
+          //Windows phone overlays the task bar on the top of the screen. 
+          //Setting the position of the task bar to be absolute for windows phones.
+          //http://stackoverflow.com/questions/19518145/windows-phone-8-html5-viewport-is-higher-than-the-screen-after-update-to-8-0-103
+          $('#fh_appform_container .navbar-fixed-top.fh_appform_section_area').css("position", "absolute");
+          $('#fh_appform_container .sidebar-offcanvas.fh_appform_section_area').css("position", "absolute");
+        }
+    });
+</script>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<div class="fh_appform_form_area row">
+    <div id="includedContent" style="display:none;"></div>
+    <div id="fh_appform_alerts_area"><div class="fh_appform_alert_offline hidden error">Working Offline.</div></div>
+    <div class="fh_appform_body_area col-xs-12">
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle pull-left" data-toggle="offcanvas" data-target="#forms-navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand pull-right" href="#">App Forms</a>
+          </div>
+
+          <div class="navbar-collapse collapse" style="height: 1px;" id="forms-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="header_forms active" id="header_forms"><a href="#">Forms<span class="badge pull-right"></span></a></li>
+                <li class="header_drafts" id="header_drafts"><a href="#">Drafts<span class="badge pull-right"></span></a></li>
+                <li class="header_pending" id="header_pending"><a href="#">Pending<span class="badge pull-right"></span></a></li>
+                <li class="header_queued" id="header_queued"><a href="#">Uploading<span class="badge pull-right"></span></a></li>
+                <li class="header_review" id="header_review"><a href="#">Review<span class="badge pull-right"></span></a></li>
+                <li class="header_sent" id="header_sent"><a href="#">Sent<span class="badge pull-right"></span></a></li>
+                <li class="header_settings" id="header_settings"><a href="#">Settings</a></li>
+            </ul>
+            
+          </div>
+        </div>
+
+        <div id="fh_appform_alerts_area">
+          <div id="fh_appform_alert_offline" class="alert alert-danger hidden">Working Offline.</div>
+        </div>
+        
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="sidebar-offcanvas visible-xs"  id="fh_appform_header">
+            </div>
+            <div class="col-xs-12 content">
+                
+                <div id="fh_content_form_list" style="display:none;" class="fh_appform_form_list"></div>
+                <div id="fh_content_drafts" style="display:none;" class="fh_appform_submission_list"></div>
+                <div id="fh_content_pending" style="display:none;" class="fh_appform_submission_list"></div>
+                <div id="fh_content_queued" style="display:none;" class="fh_appform_submission_list"></div>
+                <div id="fh_content_review" style="display:none;" class="fh_appform_submission_list"></div>
+                <div id="fh_content_sent" style="display:none;" class="fh_appform_submission_list"></div>
+                <div id="fh_content_settings" style="display:none;"></div>
+                <div id="fh_appform_content" style="display:none;"></div>
+                <div id="fh_appform_content" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">Please Wait</h4>
+          </div>
+          <div class="modal-body center-block">
+            <div class="progress">
+              <div class="progress-bar bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type='application/javascript' src='lib/fastclick.js'></script>
+    <script src="lib/utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/underscore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/async.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/moment.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/bootstrap-tagsinput.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/bootstrap-slider.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!-- mobiscroll -->
+    <script src="lib/mobiscroll.custom.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Models -->
+    <script src="js/models/form.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/models/submission.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Views -->
+    <script src="js/views/loading.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/loading_collection.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/show_form_button.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/form.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/submission_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/form_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/sent_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/draft_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/settings.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/item.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/draft_item.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/pending_review_item.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/pending_waiting_item.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/pending_submitting_item.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/pending_submitted_item.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="js/views/pending_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/queued_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/review_list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/views/alert.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Router -->
+    <script src="js/router.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <script src="lib/appform-backbone.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+    $(function(){
+    $("#includedContent").load("templates/templates.html");
+    });
+    </script>
+    <script>
+    </script>
+</div>
