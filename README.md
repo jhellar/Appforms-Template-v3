@@ -62,4 +62,4 @@ It is possible to run the [Hello World Cloud App](https://github.com/feedhenry-t
 
 ### Running Client App In The RHAMP Studio
 
-This client app already has the correct structure to be imported directly into the RHMAP Studio. Simply follow the [App Import Guid](http://docs.feedhenry.com/v3/guides/app_import.html).
+This client app already has the correct structure to be imported directly into the RHMAP Studio. Simply follow the [App Import Guide](http://docs.feedhenry.com/v3/guides/app_import.html).
