@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             var src = $(el).attr('src');
             var concat = $(el).attr('concat');
 
-            if (concat && concat.match('true')) {
+            if (concat && concat.match('true') && src.match(re)) {
                 scripts.push('./www/' + src);
             }
         });
