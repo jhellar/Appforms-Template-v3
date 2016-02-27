@@ -1,4 +1,4 @@
-# Feedhenry Drag & Drop Apps Template App v3
+# FeedHenry Drag & Drop Apps Template App v3
 
 ## Overview
 This Template App is intended to work with the Drag & Drop Apps feature in the Red Hat Mobile Application Platform.
@@ -60,6 +60,6 @@ It is possible to run the [Hello World Cloud App](https://github.com/feedhenry-t
 13. Place the Environment Variables in the `Gruntfile.js` file of your local Cloud App in the `env.local` section of the config.
 14. In the local Cloud App, run `grunt serve:local` to initialise the Cloud App.
 
-### Running Client App In The RHAMP Studio
+### Running Client App In The RHMAP Studio
 
 This client app already has the correct structure to be imported directly into the RHMAP Studio. Simply follow the [App Import Guide](http://docs.feedhenry.com/v3/guides/app_import.html).
