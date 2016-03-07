@@ -55,7 +55,7 @@ App.Router = Backbone.Router.extend({
             });
         }
 
-        
+
         $("#includedContent").load("templates/templates.html");
 
         self.loadingView.show("App Starting", 10);
@@ -126,10 +126,21 @@ App.Router = Backbone.Router.extend({
     onResume: function() {
         // only trigger resync of forms if NOT resuming after taking a photo
         if (App.resumeFetchAllowed) {
-            App.collections.forms.fetch();
-        } else {
-            // reset flag to true for next time
-            App.resumeFetchAllowed = true;
+          var loadingView = new LoadingCollectionView();
+          loadingView.show("Refreshing Forms List.", 30);
+          App.collections.forms.fetch({
+            success: function(){
+              //Fetch is finished, render the updated forms list
+              loadingView.show("Finished refreshing forms list.", 100);
+
+              loadingView.hide();
+              App.views.form_list.render();
+            },
+            error: function(err){
+              $fh.forms.log.e("Error refreshing forms list. ", err);
+              AlertView.showAlert("Error refreshing forms list.", "error", 1000);
+            }
+          });
         }
     },
     onConfigLoaded: function() {

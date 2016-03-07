@@ -2,7 +2,10 @@ $fh.ready({}, function() {
     FormView = $fh.forms.backbone.FormView.extend({
         initialize: function(params) {
             var self = this;
-            self.options = params || {};
+            params = params || {};
+            params.fromRemote = false;
+            params.rawMode = true;
+            self.options = params;
             $fh.forms.backbone.FormView.prototype.initialize.call(this, params);
 
             if (params.form) {
@@ -24,7 +27,7 @@ $fh.ready({}, function() {
                 function(err) {
                     if(err){
                         AlertView.showAlert("Error Saving Draft.", "error", 1000);
-                    } else {    
+                    } else {
                         refreshSubmissionCollections();
                         self.submission.on("validationerror", self.onValidateError);
                         AlertView.showAlert("Draft Saved", "success", 1000);

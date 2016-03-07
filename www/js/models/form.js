@@ -3,7 +3,7 @@ FormModel = Backbone.Model.extend({
     sync: function(method, model, options) {
         if (method == "read") {
             this.loadForm();
-        } 
+        }
     },
     defaults: {
         "Theme": "",
@@ -45,6 +45,7 @@ FormModel = Backbone.Model.extend({
 
 FormsCollection = Backbone.Collection.extend({
     model: FormModel,
+    comparator: 'name',
     sync: function(method, collection, options) {
         var self = this;
         if (method == "read") {
@@ -59,11 +60,13 @@ FormsCollection = Backbone.Collection.extend({
                     var formIdArr = [];
                     for (var i = 0; i < formList.size(); i++) {
                         var formId = formList.getFormIdByIndex(i);
+                        var formMeta = formList.getFormMetaById(formId);
                         formIdArr.push({
-                            formId: formId
+                          name: formMeta.name,
+                          formId: formId
                         });
                     }
-                    
+
                     options.success(formIdArr);
                 }
             });
