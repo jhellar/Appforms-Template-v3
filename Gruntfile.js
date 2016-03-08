@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-wget');
+    grunt.loadNpmTasks('grunt-mocha-test');
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -49,6 +50,11 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: '<json:package.json>',
+        mochaTest: {
+          test: {
+            src: ['test/**/*.js']
+          }
+        },
         concat: {
             dist: {
                 src: ['<banner>'].concat(matchFiles(/^(?!lib\/)|(mobiscroll)/)),
@@ -309,6 +315,7 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', ['clean', 'jshint', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
+    grunt.registerTask('test', 'mochaTest');
+    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
 
 };

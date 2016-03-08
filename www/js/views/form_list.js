@@ -35,10 +35,12 @@ var FormListView = Backbone.View.extend({
         App.views.header.markActive('header_forms', "Forms");
         this.render();
         $(this.$el).show();
+        App.resumeFetchAllowed = true;
     },
 
     hide: function() {
-        $(this.$el).hide();
+      App.resumeFetchAllowed = false;
+      $(this.$el).hide();
     },
 
     renderErrorHandler: function(msg) {
@@ -61,7 +63,7 @@ var FormListView = Backbone.View.extend({
         // Empty our existing view
         $(this.$el).empty();
 
-        
+
         //Append Logo
         $(this.$el).append(_.template($('#forms-logo').html())());
         // Add list
