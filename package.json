@@ -2,6 +2,9 @@
   "name": "FeedHenry-App-Forms-Phase3-App-Generator",
   "version": "1.0.1",
   "dependencies": {},
+  "scripts": {
+    "test": "grunt test"
+  },
   "devDependencies": {
     "async": "0.9.2",
     "browserify": "13.0.0",
