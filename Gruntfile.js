@@ -252,7 +252,7 @@ module.exports = function(grunt) {
 
 
         // add the tags and make a dev copy of the html
-        $('body').append('<script src="lib.js"></script>\n');
+        $('script[src="feedhenry.js"]').after('\n<script src="lib.js"></script>\n');
         $('body').append('<script src="main.js"></script>\n');
         require('child_process').exec(' git rev-parse --short  --verify HEAD', function(error, stdout, stderr) {
             if (grunt.option("verbose")) {
