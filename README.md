@@ -37,9 +37,19 @@ When you want to change either the Backbone or Core forms SDK, it is easier to s
 1. Clone the source code for the Client App. (Fork This Repo)
 2. Clone the [Feedhenry JS SDK](https://github.com/feedhenry/fh-js-sdk) locally.
 3. Run `grunt build` on the *fh-js-sdk* to build the required SDK files.
-4. Symlink `dist/feedhenry-forms.js` to `www/feedhenry.js`.
-5. Symlink `dist/appForms-backbone.js` to `www/lib/appform-backbone.js`.
+4. Symlink `dist/feedhenry-forms.js` to `www/feedhenry.js` from the Appforms-Template-v3 directory:
+```
+    $ ln -fs `pwd`/../fh-js-sdk/dist/feedhenry-forms.js www/feedhenry.js
+```
+5. Symlink `dist/appForms-backbone.js` to `www/lib/appform-backbone.js` from the Appforms-Template-v3 directory:
+```
+    $ ln -fs `pwd`/..//fh-js-sdk/dist/appForms-backbone.js www/lib/appform-backbone.js
+```
 6. Run your app locally. When ever a change is made to the js-sdk, run `grunt build` again to update the symlinks and refresh the app. The symlinks will allow the changes to be reflected immediately.
+```
+    $ grunt serve:local --url http://cloudappopenr4a5.local.feedhenry.io/
+```
+Where ```--url``` points to your deployed cloud app.
 
 ### Running Cloud App Locally
 
