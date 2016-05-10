@@ -1,6 +1,6 @@
 {
   "name": "FeedHenry-App-Forms-Phase3-App-Generator",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "dependencies": {},
   "scripts": {
     "test": "grunt test"
