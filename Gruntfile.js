@@ -84,7 +84,7 @@ module.exports = function(grunt) {
                     src: ['www/templates/*']
                 }, {
                     dest: 'dist/',
-                    src: ['www/css/*']
+                    src: ['www/css/**']
                 }, {
                     dest: 'dist/',
                     src: ['www/img/*']
