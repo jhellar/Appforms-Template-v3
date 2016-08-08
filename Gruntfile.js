@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-wget');
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-mocha-test');
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
                     src: ['dist-dev/www/main.js']
                 }, {
                     dest: 'dist/',
-                    src: ['www/feedhenry.js']
+                    src: ['www/browserify.js']
                 }, {
                     dest: 'dist/',
                     src: ['www/fhconfig.json']
@@ -88,12 +88,6 @@ module.exports = function(grunt) {
                 }, {
                     dest: 'dist/',
                     src: ['www/img/*']
-                }]
-            },
-            backbone: {
-                files: [{
-                    dest: './www/lib/appFormjs-backbone.js',
-                    src: '../fh-js-sdk/dist/appForms-backbone.js'
                 }]
             },
             toApp: {
@@ -187,15 +181,8 @@ module.exports = function(grunt) {
             }
           }
         },
-        wget: {
-            backboneJSSDK: {
-                files: {
-                    './www/lib/appFormjs-backbone.js': 'https://raw.githubusercontent.com/feedhenry/fh-js-sdk/feedhenry3-dist/appForms-backbone.js'
-                },
-                options: {
-                    overwrite: true
-                }
-            }
+        browserify: {
+            'www/browserify.js': ['www/js/init.js']
         }
     });
 
@@ -229,6 +216,7 @@ module.exports = function(grunt) {
       }
 
       grunt.task.run([
+        'browserify',
         'clean:server',
         'connect:livereload',
         'watch'

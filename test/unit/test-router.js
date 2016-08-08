@@ -14,8 +14,8 @@ describe("Router", function(){
     show: sinon.stub()
   });
   LoadingCollectionView = LoadingCollectionViewStub;
-  Backbone = require('../../www/lib/backbone.js');
-  _ = require('../../www/lib/underscore.js');
+  Backbone = require('backbone');
+  _ = require('underscore');
   var router = require('../../www/js/router.js');
 
   beforeEach(function(){
