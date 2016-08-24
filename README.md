@@ -73,3 +73,9 @@ It is possible to run the [Hello World Cloud App](https://github.com/feedhenry-t
 ### Running Client App In The RHMAP Studio
 
 This client app already has the correct structure to be imported directly into the RHMAP Studio. Simply follow the [App Import Guide](http://docs.feedhenry.com/v3/guides/app_import.html).
+
+### Updating fh-js-sdk version
+To update the JS SDK:
+- change the version in [package.json](package.json)
+- run `npm install` a grunt task is automatically ran to regenerate `www/browserify.js`
+- check-in git repo the new package.json + `www/browserify.js`
