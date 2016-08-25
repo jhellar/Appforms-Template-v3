@@ -72,9 +72,6 @@ module.exports = function(grunt) {
                     src: ['dist-dev/www/main.js']
                 }, {
                     dest: 'dist/',
-                    src: ['www/browserify.js']
-                }, {
-                    dest: 'dist/',
                     src: ['www/fhconfig.json']
                 }, {
                     dest: 'dist/',
@@ -182,7 +179,7 @@ module.exports = function(grunt) {
           }
         },
         browserify: {
-            'www/browserify.js': ['www/js/init.js']
+            'www/lib/browserify.js': ['www/js/init.js']
         }
     });
 
@@ -240,7 +237,7 @@ module.exports = function(grunt) {
 
 
         // add the tags and make a dev copy of the html
-        $('script[src="browserify.js"]').after('\n<script src="lib.js"></script>\n');
+        $('title').after('\n<script src="lib.js"></script>\n');
         $('body').append('<script src="main.js"></script>\n');
         require('child_process').exec(' git rev-parse --short  --verify HEAD', function(error, stdout, stderr) {
             if (grunt.option("verbose")) {
