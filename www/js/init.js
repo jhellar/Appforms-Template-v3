@@ -11,3 +11,5 @@ require('bootstrap');
 require('bootstrap-tagsinput');
 require('bootstrap-slider');
 require('fastclick');
+
+window.async = require('async');

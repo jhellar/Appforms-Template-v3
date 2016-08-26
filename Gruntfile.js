@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         },
         concat: {
             dist: {
-                src: ['<banner>'].concat(matchFiles(/^(?!lib\/)|(mobiscroll)/)),
+                src: ['<banner>'].concat(matchFiles(/^js/)),
                 dest: 'dist-dev/www/main.js'
             },
             lib: {
@@ -301,6 +301,6 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('test', 'mochaTest');
-    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
+    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'browserify', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
 
 };
