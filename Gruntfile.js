@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         },
         concat: {
             dist: {
-                src: ['<banner>'].concat(matchFiles(/^(?!lib\/)|(mobiscroll)/)),
+                src: ['<banner>'].concat(matchFiles(/^js/)),
                 dest: 'dist-dev/www/main.js'
             },
             lib: {
@@ -70,9 +70,6 @@ module.exports = function(grunt) {
                 files: [{
                     dest: 'dist/www/main.js',
                     src: ['dist-dev/www/main.js']
-                }, {
-                    dest: 'dist/',
-                    src: ['www/browserify.js']
                 }, {
                     dest: 'dist/',
                     src: ['www/fhconfig.json']
@@ -182,7 +179,7 @@ module.exports = function(grunt) {
           }
         },
         browserify: {
-            'www/browserify.js': ['www/js/init.js']
+            'www/lib/browserify.js': ['www/js/init.js']
         }
     });
 
@@ -240,7 +237,7 @@ module.exports = function(grunt) {
 
 
         // add the tags and make a dev copy of the html
-        $('script[src="browserify.js"]').after('\n<script src="lib.js"></script>\n');
+        $('title').after('\n<script src="lib.js"></script>\n');
         $('body').append('<script src="main.js"></script>\n');
         require('child_process').exec(' git rev-parse --short  --verify HEAD', function(error, stdout, stderr) {
             if (grunt.option("verbose")) {
@@ -304,6 +301,6 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('test', 'mochaTest');
-    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
+    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'browserify', 'mkdirs', 'concat', 'copy:dist', 'uglify:lib', 'index']);
 
 };

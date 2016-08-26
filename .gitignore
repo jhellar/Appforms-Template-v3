@@ -26,3 +26,4 @@ fh-log
 cov-*
 plato
 .idea
+www/lib/browserify.js

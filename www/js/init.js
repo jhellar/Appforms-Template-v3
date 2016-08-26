@@ -1,5 +1,6 @@
 //load browserified npm dependencies into global variables
 
+window.async = require('async');
 window.jQuery = window.$ = require('jquery');
 window.Backbone = require('backbone');
 window._ = require('underscore');
