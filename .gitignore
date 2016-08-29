@@ -8,6 +8,8 @@ dist.zip
 output/
 man/
 node_modules/
+platforms/
+plugins/
 *~
 nohup.out
 TAGS
