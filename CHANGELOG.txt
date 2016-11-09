@@ -1,6 +1,10 @@
-now uses fh-js-sdk as an npm dependency
+1.3.4 - 2016-11-08 - Erik Jan de Wit
+
+RHMAP-10243 - Update js-sdk version.
 
 1.3.3 - 2016-08-08 - Erik Jan de Wit
+
+now uses fh-js-sdk as an npm dependency
 
 ----------------------------------------------------------------------
 Component: AppForms Phase III
