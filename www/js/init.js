@@ -11,4 +11,4 @@ window.moment = require('moment');
 require('bootstrap');
 require('bootstrap-tagsinput');
 require('bootstrap-slider');
-require('fastclick');
+window.attachFastClick = require('fastclick');
