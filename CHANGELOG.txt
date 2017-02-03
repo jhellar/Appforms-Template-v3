@@ -1,3 +1,7 @@
+1.3.8 - 2017-02-03 - Niall Donnelly
+
+Updating fh-js-sdk to 2.18.2
+
 1.3.7 - 2017-01-03 - Niall Donnelly
 
 Updating fh-js-sdk to 2.18.1
