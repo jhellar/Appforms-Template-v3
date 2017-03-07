@@ -1,3 +1,13 @@
+1.3.10 - 2017-03-07 - Julio Cesar
+
+RHMAP-13826 - Make all Cordova templates use patch version instead of minor version in package.json
+RHMAP-14021 - Fix map form component is not displayed on Android
+
+1.3.9 - 2017-02-20 - Niall Donnelly
+
+RHMAP-13542 - Fix Cannot Submit Map Location Data in Android Apps Built Using Android Form Builder
+Updating fh-js-sdk to 2.18.4
+
 1.3.8 - 2017-02-03 - Niall Donnelly
 
 Updating fh-js-sdk to 2.18.2
