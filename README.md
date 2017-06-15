@@ -77,5 +77,5 @@ This client app already has the correct structure to be imported directly into t
 ### Updating fh-js-sdk version
 To update the JS SDK:
 - change the version in [package.json](package.json)
-- run `npm install` a grunt task is automatically ran to regenerate `www/browserify.js`
-- check-in git repo the new package.json + `www/browserify.js`
+- run `npm install` a grunt task is automatically ran to regenerate `www/lib/browserify.js`
+- check-in git repo the new package.json + `www/lib/browserify.js`
