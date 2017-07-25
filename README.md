@@ -69,6 +69,7 @@ It is possible to run the [Hello World Cloud App](https://github.com/feedhenry-t
   12. FH_APP_API_KEY
 13. Place the Environment Variables in the `Gruntfile.js` file of your local Cloud App in the `env.local` section of the config.
 14. In the local Cloud App, run `grunt serve:local` to initialise the Cloud App.
+15. You may need to replace the `url` query parameter with the actual URL of the cloud app. This URL can be found in the `Details` tab of the Cloud App under `Current Host`
 
 ### Running Client App In The RHMAP Studio
 
